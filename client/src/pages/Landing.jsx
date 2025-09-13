@@ -5,6 +5,7 @@ import "aos/dist/aos.css";
 import { Star, Play, ChevronDown } from "lucide-react";
 import PremiumCard from "../components/PremiumCard";
 import { useNavigate } from "react-router-dom";
+import Topsell from "../components/Topsell";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const Landing = () => {
         {/* Left section */}
         <div
           data-aos="fade-right"
-          className=" px-42 py-20 select-none text-white "
+          className=" px-42 py-10 select-none text-white "
         >
           <div className="inline-flex gap-2 bg-purple-700  px-5 py-2 rounded-4xl mb-8">
             <span>
@@ -85,7 +86,7 @@ const Landing = () => {
           </div>
 
           {/* Stat section */}
-          <div className="flex space-x-15">
+          <div className="flex space-x-20">
             <span>
               <h1 className="text-2xl font-bold flex justify-center">1K+</h1>
               <h1 className="text-gray-400">Happy Gamers</h1>
@@ -106,6 +107,10 @@ const Landing = () => {
         </div>
         {/* Right Section */}
         <PremiumCard />
+
+      </div>
+      <div>
+        <Topsell/>
       </div>
     </>
   );
