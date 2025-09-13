@@ -4,8 +4,19 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Star, Play, ChevronDown } from "lucide-react";
 import PremiumCard from "../components/PremiumCard";
+import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
+  const navigate = useNavigate();
+
+  const handleGames = () => {
+    navigate("/games");
+  };
+
+  const handleBundle = () => {
+    navigate("/bundles");
+  };
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -16,6 +27,7 @@ const Landing = () => {
   return (
     <>
       <div className="bg-black min-h-screen ">
+        <Navbar />
         {/* Left section */}
         <div
           data-aos="fade-right"
@@ -52,11 +64,15 @@ const Landing = () => {
 
           {/* button */}
           <div className="font-bold text-xl space-x-5 flex mb-10">
-            <button className="bg-purple-700 px-7 py-5 rounded-2xl flex items-center gap-2 hover:bg-purple-600 transform hover:scale-110 transition duration-300">
+            <button
+              onClick={handleGames}
+              className="bg-purple-700 px-7 py-5 rounded-2xl flex items-center gap-2 hover:bg-purple-600 transform hover:scale-110 transition duration-300"
+            >
               <Play size={18} />
               Browse Games
             </button>
             <button
+              onClick={handleBundle}
               className="group bg-[#2a3750] px-7 py-5 rounded-2xl flex items-center gap-2 
                      hover:bg-gray-600 transform hover:scale-110 transition duration-300 
                      border border-gray-600"
@@ -89,7 +105,7 @@ const Landing = () => {
           </div>
         </div>
         {/* Right Section */}
-        <PremiumCard/>
+        <PremiumCard />
       </div>
     </>
   );
