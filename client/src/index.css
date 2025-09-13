@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #131731;
+  --color-button: #2a3750;
+  --color-secondary: #341963;
+  --color-text-primary: #E0E0E0;
+  --color-text-secondary: #B0B0C0;
+
+  --background-image-gradient-bg: linear-gradient(135deg, #34196333 0%, #2a375033 50%, #00CFFF33 100%);
+  --background-image-gradient-text: linear-gradient(to right, #ffffff, #b45cff, #00CFFF);
+ --background-image-gradient-button: linear-gradient(to right, #341963, #2a3750);
+}
