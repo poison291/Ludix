@@ -28,7 +28,7 @@ const Landing = () => {
   return (
     <>
       <div className="bg-black min-h-screen ">
-        <Navbar />
+        <Navbar bgColor="bg-black" />
         {/* Left section */}
         <div
           data-aos="fade-right"
@@ -106,7 +106,7 @@ const Landing = () => {
           </div>
         </div>
         {/* Right Section */}
-        <PremiumCard />
+        {/* <PremiumCard /> */}
 
       </div>
       <div>
