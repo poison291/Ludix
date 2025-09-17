@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "title": "CyberGame",
+    "price": 29.99,
+    "category": "Action",
+    "description": "A futuristic action-packed shooter with stunning graphics.",
+    "image": "https://example.com/cybergame.jpg",
+    "icon": "https://steamcdn-a.akamaihd.net/steam/apps/123456/icon.jpg",
+    "stock": 50,
+    "visible": true,
+    "platforms": ["PC", "Steam"],
+    "releaseDate": "2025-09-20",
+    "developer": "CyberDev Studio",
+    "publisher": "GamePublisher Inc",
+    "rating": 4.5,
+    "status": true
+  },
+  {
+    "id": 2,
+    "title": "Fantasy Quest",
+    "price": 19.99,
+    "category": "RPG",
+    "description": "Embark on a magical adventure filled with quests and mysteries.",
+    "image": "https://example.com/fantasyquest.jpg",
+    "icon": "https://steamcdn-a.akamaihd.net/steam/apps/654321/icon.jpg",
+    "stock": 100,
+    "visible": true,
+    "platforms": ["PC", "Xbox"],
+    "releaseDate": "2025-07-15",
+    "developer": "FantasyWorks",
+    "publisher": "Adventure Games Ltd",
+    "rating": 4.8,
+    "status": false
+  }
+]

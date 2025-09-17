@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 
 const AdminPanel = () => {
-  const [activeTab, setActiveTab] = useState('dashboard');
+  const [activeTab, setActiveTab] = useState('games');
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Sample data
