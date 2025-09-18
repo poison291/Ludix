@@ -60,19 +60,19 @@ export const updateGames = async (req, res) => {
   const { title, price, image } = req.body;
 
   try {
-    const updatedGame = await sql`
+    const updateGame = await sql`
     UPDATE games
     SET title=${title}, price=${price}, image=${image}
     WHERE id=${id}
     RETURNING *
     `;
-    if (updateGames.length === 0) {
+    if (updateGame.length === 0) {
       res.status(404).json({
         success: false,
         message: "Game not found",
       });
     }
-    res.status(200).json({ success: true, data: updateGames[0] });
+    res.status(200).json({ success: true, data: updateGame[0] });
   } catch (error) {
     console.log(`Error in update game function: ${error}`);
     res.status(500).json({ success: false, message: "Internal Server Error!" });
