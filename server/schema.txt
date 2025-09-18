@@ -1,0 +1,18 @@
+await sql`
+      CREATE TABLE IF NOT EXISTs games(
+      id SERIAL PRIMARY KEY,
+      title VARCHAR(255) NOT NULL,
+      price DECIMAL(10,2) NOT NULL,
+      category VARCHAR(100) NOT NULL,
+      description TEXT NOT NULL,
+      image TEXT NOT NULL,
+      stock INT DEFAULT 0,
+      visible BOOLEAN DEFAULT true,
+      platforms TEXT[],
+      release_date DATE,
+      developer VARCHAR(255),
+      publisher VARCHAR(255),
+      rating DECIMAL(2,1),
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+      `;
