@@ -5,6 +5,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import gameRoutes from "./Routes/gameRoutes.js";
 import { sql } from "./config/db.js";
+import { aj } from "./lib/arcjet.js";
 
 dotenv.config();
 
@@ -17,13 +18,21 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
 
+//apply arcjet rate limit
+app.use(async (req, res, next) => {
+  try {
+    const decision = await aj.protect(req, {
+      requested: 1, //
+    });
+    
+  } catch (error) {}
+});
+
+//Api Routes setup
 app.use("/api/games", gameRoutes);
 
 async function initDB() {
   try {
-    
-  
-
     await sql`
       CREATE TABLE IF NOT EXISTs games(
       id SERIAL PRIMARY KEY,
