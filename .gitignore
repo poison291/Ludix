@@ -1,2 +1,35 @@
-# ignore all env files
+# Environment files
+**/.env
+.env
 *.env
+
+# Node modules (if you're using Node.js)
+**/node_modules
+node_modules/
+
+# Build directories
+**/dist
+**/build
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+**/logs
+
+# Dependencies lock files (optional - some prefer to track these)
+# package-lock.json
+# yarn.lock
