@@ -41,7 +41,7 @@ const GameDetail = () => {
       <div className="p-6 bg-black min-h-screen text-white">
         <Navbar />
         <div className="ml-10">
-          <BreadCrumbs />
+          <BreadCrumbs title={gameData.title}/>
         </div>
         <h1 className="text-3xl font-bold mb-4">{gameData.title}</h1>
         <img
