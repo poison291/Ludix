@@ -24,8 +24,33 @@ app.use(async (req, res, next) => {
     const decision = await aj.protect(req, {
       requested: 1, //
     });
-    
-  } catch (error) {}
+
+    if (decision.isDenied()) {
+      if (decision.reason.isRateLimit()) {
+        res.status(429).json({
+          error: "Too Many Request!",
+        });
+      } else if (decision.reason.isBot()) {
+        res.status(403).json({
+          error: "Bot Access Denied",
+        });
+      } else {
+        res.status(403).json({
+          error: "Forbidden",
+        });
+      }
+      return
+    }
+    if(decision.results.some((result) => result.reason.isBot() && result.reason.isSpoofed())){
+      res.status(403).json({
+        error: "Spoof bot detected"
+      })
+    }
+    next()
+  } catch (error) {
+    console.log(`Arcjet Error: ${error}`)
+    next(error)
+  }
 });
 
 //Api Routes setup
