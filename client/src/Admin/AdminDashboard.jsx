@@ -10,7 +10,7 @@ import {
 import React, { useState } from "react";
 import Dashboard from "./Pages/Dashboard";
 import Users from "./Pages/Users";
-import Games from "./Pages/Games";
+import Games from "./Pages/AddGames";
 import SettingPage from "./Pages/SettingPage";
 import Orders from "./Pages/Orders";
 import Analytics from "./Pages/Analytics";

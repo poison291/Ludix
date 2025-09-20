@@ -1,3 +1,4 @@
+import { Baseline } from "lucide-react";
 import { useParams } from "react-router-dom";
 
 const BASE_URL = "http://localhost:5001/api";
@@ -30,5 +31,22 @@ export async function getGameDetails(id) {
 
   } catch (error) {
     console.log(`Error While Fetching Game detail: ${error}`);
+  }
+}
+
+
+
+//Function to delete particular game
+
+export async function deleteGame(id) {
+  try {
+    const res = await fetch(`${BASE_URL}/games/${id}`, {
+      method: "DELETE",
+    })
+    if (!res.ok) throw new Error("Failed to delete game");
+  return res.json();
+
+  } catch (error) {
+    console.log(`Error While Deleteing the game: ${error}`)
   }
 }

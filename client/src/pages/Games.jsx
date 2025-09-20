@@ -14,7 +14,6 @@ const Games = () => {
       const result = await getGame();
       if (result.success) {
         setgameData(result.data);
-        // console.log(result.data.image)
       }
       setloading(false);
     }
@@ -34,6 +33,9 @@ const Games = () => {
       </div>
     );
 
+  // Filter the gameData to show only games with visible: true
+  const visibleGames = gameData.filter((game) => game.visible === true);
+
   return (
     <>
       <div className="bg-[#0e171b] min-h-screen">
@@ -41,8 +43,8 @@ const Games = () => {
         <div className="ml-10">
           <BreadCrumbs />
         </div>
-        <div className="p-6 text-whit flex items-center justify-between">
-          {gameData.map((game) => (
+        <div className="p-6 text-white flex items-center gap-5">
+          {visibleGames.map((game) => (
             <Link key={game.id} to={`/games/${game.id}`}>
               <div key={game.id} className="mb-6 p-4 border rounded">
                 <img
@@ -51,10 +53,7 @@ const Games = () => {
                   className="w-32 h-44 object-cover"
                 />
                 <h2 className="font-bold text-xl mt-2">{game.title}</h2>
-                {/* <p>{game.description}</p> */}
-                <p className="mt-1 font-semibold">
-                  Nrs.{game.price} 
-                </p>
+                <p className="mt-1 font-semibold">Nrs.{game.price}</p>
               </div>
             </Link>
           ))}

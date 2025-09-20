@@ -90,3 +90,68 @@ cd client
 npm start
 
 
+
+```
+Playport
+├─ client
+│  ├─ eslint.config.js
+│  ├─ index.html
+│  ├─ package-lock.json
+│  ├─ package.json
+│  ├─ public
+│  │  └─ icon.jpg
+│  ├─ README.md
+│  ├─ src
+│  │  ├─ Admin
+│  │  │  ├─ AdminDashboard.jsx
+│  │  │  ├─ Components
+│  │  │  │  └─ PreviewCards.jsx
+│  │  │  ├─ games.json
+│  │  │  └─ Pages
+│  │  │     ├─ Analytics.jsx
+│  │  │     ├─ Dashboard.jsx
+│  │  │     ├─ Games.jsx
+│  │  │     ├─ Orders.jsx
+│  │  │     ├─ SettingPage.jsx
+│  │  │     └─ Users.jsx
+│  │  ├─ Api
+│  │  │  └─ gameApi.js
+│  │  ├─ App.jsx
+│  │  ├─ assets
+│  │  │  ├─ bg.png
+│  │  │  ├─ logo.png
+│  │  │  └─ premiumbundle.jpg
+│  │  ├─ components
+│  │  │  ├─ BreadCrumbs.jsx
+│  │  │  ├─ Navbar.jsx
+│  │  │  ├─ PremiumCard.jsx
+│  │  │  └─ Topsell.jsx
+│  │  ├─ data
+│  │  │  └─ game.json
+│  │  ├─ index.css
+│  │  ├─ main.jsx
+│  │  ├─ pages
+│  │  │  ├─ Bundle.jsx
+│  │  │  ├─ GameDetail.jsx
+│  │  │  ├─ Games.jsx
+│  │  │  ├─ Landing.jsx
+│  │  │  └─ Test.jsx
+│  │  └─ routes
+│  │     └─ Approutes.jsx
+│  └─ vite.config.js
+├─ README.md
+└─ server
+   ├─ config
+   │  └─ db.js
+   ├─ Controllers
+   │  └─ gameController.js
+   ├─ lib
+   │  └─ arcjet.js
+   ├─ package-lock.json
+   ├─ package.json
+   ├─ Routes
+   │  └─ gameRoutes.js
+   ├─ schema.txt
+   └─ server.js
+
+```
