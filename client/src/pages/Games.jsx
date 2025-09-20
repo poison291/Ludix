@@ -41,7 +41,7 @@ const Games = () => {
         <div className="ml-10">
           <BreadCrumbs />
         </div>
-        <div className="p-6 text-white">
+        <div className="p-6 text-whit flex items-center justify-between">
           {gameData.map((game) => (
             <Link key={game.id} to={`/games/${game.id}`}>
               <div key={game.id} className="mb-6 p-4 border rounded">
@@ -51,9 +51,9 @@ const Games = () => {
                   className="w-32 h-44 object-cover"
                 />
                 <h2 className="font-bold text-xl mt-2">{game.title}</h2>
-                <p>{game.description}</p>
+                {/* <p>{game.description}</p> */}
                 <p className="mt-1 font-semibold">
-                  {game.price} {game.currency}
+                  Nrs.{game.price} 
                 </p>
               </div>
             </Link>

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Plus, Search, Funnel } from "lucide-react";
 import gamedata from "../games.json";
+import { getGame } from "../../Api/gameApi";
 
 const Games = () => {
   const [game, setgame] = useState(gamedata);

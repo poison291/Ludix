@@ -50,6 +50,7 @@ const GameDetail = () => {
         />
         {/* <p className="mt-4">{game.description}</p> */}
         <p className="mt-2 font-semibold">Price: {gameData.price}</p>
+        <p className="mt-2 font-semibold">date: {gameData.release_date}</p>
       </div>
     </>
   );

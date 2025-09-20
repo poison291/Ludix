@@ -17,9 +17,35 @@ export const getGames = async (req, res) => {
 
 // Posting a Game to the DB
 export const createGames = async (req, res) => {
-  const { title, price, image } = req.body;
+  const {
+    title,
+    price,
+    image,
+    categories,
+    description,
+    stock,
+    visible,
+    platforms,
+    tags,
+    release_date,
+    developer,
+    publisher,
+    rating,
+  } = req.body;
 
-  if (!title || !price || !image) {
+  if (
+    !title ||
+    !price ||
+    !image ||
+    !categories ||
+    !description ||
+    !platforms ||
+    !tags ||
+    !release_date ||
+    !developer ||
+    !publisher ||
+    !rating
+  ) {
     return res
       .status(400)
       .json({ success: false, message: "All fields are required!" });
@@ -27,8 +53,8 @@ export const createGames = async (req, res) => {
 
   try {
     const newGames = await sql`
-      INSERT INTO games (title, price, image)
-      VALUES (${title}, ${price}, ${image})
+      INSERT INTO games (title, price, image, categories, description, stock, visible, platforms, tags, release_date, developer, publisher, rating)
+      VALUES (${title}, ${price}, ${image}, ${categories}, ${description}, ${stock}, ${visible}, ${platforms}, ${tags}, ${release_date}, ${developer}, ${publisher}, ${rating})
       RETURNING *
       `;
     console.log(`New Games Added: ${newGames}`);
@@ -53,25 +79,59 @@ export const getGame = async (req, res) => {
     res.status(500).json({ success: false, message: "Internal server error!" });
   }
 };
-
 //Updating single Game Data
 export const updateGames = async (req, res) => {
   const { id } = req.params;
-  const { title, price, image } = req.body;
+  const updates = req.body;
 
   try {
-    const updateGame = await sql`
-    UPDATE games
-    SET title=${title}, price=${price}, image=${image}
-    WHERE id=${id}
-    RETURNING *
+    const existingGame = await sql`
+      SELECT * FROM games WHERE id=${id}
     `;
-    if (updateGame.length === 0) {
-      res.status(404).json({
+
+    if (existingGame.length === 0) {
+      return res.status(404).json({
         success: false,
         message: "Game not found",
       });
     }
+
+    const currentGame = existingGame[0];
+    const updatedData = {
+      title: updates.title ?? currentGame.title,
+      price: updates.price ?? currentGame.price,
+      image: updates.image ?? currentGame.image,
+      categories: updates.categories ?? currentGame.categories,
+      description: updates.description ?? currentGame.description,
+      stock: updates.stock ?? currentGame.stock,
+      visible: updates.visible ?? currentGame.visible,
+      platforms: updates.platforms ?? currentGame.platforms,
+      tags: updates.tags ?? currentGame.tags,
+      release_date: updates.release_date ?? currentGame.release_date,
+      developer: updates.developer ?? currentGame.developer,
+      publisher: updates.publisher ?? currentGame.publisher,
+      rating: updates.rating ?? currentGame.rating,
+    };
+
+    const updateGame = await sql`
+      UPDATE games
+      SET title=${updatedData.title}, 
+          price=${updatedData.price}, 
+          image=${updatedData.image}, 
+          categories=${updatedData.categories}, 
+          description=${updatedData.description}, 
+          stock=${updatedData.stock}, 
+          visible=${updatedData.visible}, 
+          platforms=${updatedData.platforms}, 
+          tags=${updatedData.tags}, 
+          release_date=${updatedData.release_date}, 
+          developer=${updatedData.developer}, 
+          publisher=${updatedData.publisher}, 
+          rating=${updatedData.rating}
+      WHERE id=${id}
+      RETURNING *
+    `;
+
     res.status(200).json({ success: true, data: updateGame[0] });
   } catch (error) {
     console.log(`Error in update game function: ${error}`);
