@@ -22,16 +22,16 @@ const Games = () => {
   }, []);
 
   if (loading)
-      return (
-      <Hourglass
-        visible={true}
-        height="80"
-        width="80"
-        ariaLabel="hourglass-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-        colors={["#306cce", "#72a1ed"]}
-      />
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-black">
+        <Hourglass
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="hourglass-loading"
+          colors={["#a855f7", "#9333ea"]}
+        />
+      </div>
     );
 
   return (

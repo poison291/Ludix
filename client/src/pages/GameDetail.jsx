@@ -6,7 +6,6 @@ import BreadCrumbs from "../components/BreadCrumbs";
 import Navbar from "../components/Navbar";
 import { Hourglass } from "react-loader-spinner";
 
-
 const GameDetail = () => {
   const { id } = useParams();
   const [gameData, setgameData] = useState(null);
@@ -24,15 +23,15 @@ const GameDetail = () => {
 
   if (loading)
     return (
-      <Hourglass
-        visible={true}
-        height="80"
-        width="80"
-        ariaLabel="hourglass-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-        colors={["#306cce", "#72a1ed"]}
-      />
+      <div className="flex items-center justify-center min-h-screen bg-black">
+        <Hourglass
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="hourglass-loading"
+          colors={["#a855f7", "#9333ea"]}
+        />
+      </div>
     );
   if (!gameData) return <p>Game not found!</p>;
 
@@ -41,7 +40,7 @@ const GameDetail = () => {
       <div className="p-6 bg-black min-h-screen text-white">
         <Navbar />
         <div className="ml-10">
-          <BreadCrumbs title={gameData.title}/>
+          <BreadCrumbs title={gameData.title} />
         </div>
         <h1 className="text-3xl font-bold mb-4">{gameData.title}</h1>
         <img
