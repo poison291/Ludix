@@ -3,7 +3,8 @@ import Navbar from "../components/Navbar";
 import BreadCrumbs from "../components/BreadCrumbs";
 import { Link } from "react-router-dom";
 import { getGame } from "../Api/gameApi";
-import { Hourglass } from "react-loader-spinner";
+
+import Loader from "../components/Loader";
 
 const Games = () => {
   const [gameData, setgameData] = useState([]);
@@ -20,17 +21,11 @@ const Games = () => {
     fetchData();
   }, []);
 
+  //  base_image = https://cdn.akamai.steamstatic.com/steam/apps/${game.image}/library_600x900.jpg
+
   if (loading)
     return (
-      <div className="flex items-center justify-center min-h-screen bg-black">
-        <Hourglass
-          visible={true}
-          height="80"
-          width="80"
-          ariaLabel="hourglass-loading"
-          colors={["#a855f7", "#9333ea"]}
-        />
-      </div>
+    <Loader/>
     );
 
   // Filter the gameData to show only games with visible: true

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { getGameDetails } from "../Api/gameApi";
 import BreadCrumbs from "../components/BreadCrumbs";
 import Navbar from "../components/Navbar";
-import { Hourglass } from "react-loader-spinner";
+import Loader from "../components/Loader";
 
 const GameDetail = () => {
   const { id } = useParams();
@@ -23,15 +23,7 @@ const GameDetail = () => {
 
   if (loading)
     return (
-      <div className="flex items-center justify-center min-h-screen bg-black">
-        <Hourglass
-          visible={true}
-          height="80"
-          width="80"
-          ariaLabel="hourglass-loading"
-          colors={["#a855f7", "#9333ea"]}
-        />
-      </div>
+      <Loader/>
     );
   if (!gameData) return <p>Game not found!</p>;
 

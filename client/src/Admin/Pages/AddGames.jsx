@@ -1,16 +1,19 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Plus, Search, Funnel, Pencil, Trash2 } from "lucide-react";
+import { Plus, Search, Funnel, Pencil, Trash2, Dice1 } from "lucide-react";
 import { getGame } from "../../Api/gameApi";
 import { getGameDetails } from "../../Api/gameApi";
 import CategoryDropdown from "../Components/CategoryDropDown";
 import { deleteGame } from "../../Api/gameApi";
+import Loader from "../../components/Loader";
+
 
 const AddGames = () => {
   const [game, setGame] = useState([]);
   const [filteredGames, setFilteredGames] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
+  const [loading, setLoading] = useState(true)
 
   // Getting List of games
   useEffect(() => {
@@ -20,6 +23,7 @@ const AddGames = () => {
         if (result.success) {
           setGame(result.data);
           setFilteredGames(result.data);
+          setLoading(false)
         }
       } catch (error) {
         console.log(`Failed to fetch game data in admin panel`);
@@ -69,6 +73,10 @@ const AddGames = () => {
       console.error("Failed to delete game:", error);
     }
   };
+  
+  if(loading){
+    return <Loader/>
+  }
 
   return (
     <>
@@ -116,41 +124,44 @@ const AddGames = () => {
 
             {/* Game Data Rows with Flexbox */}
             {filteredGames.map((gameItem) => (
-              <div
-                className="flex items-center text-black font-semibold py-4"
-                key={gameItem.id}
-              >
-                <img
-                  src={`https://cdn.akamai.steamstatic.com/steam/apps/${gameItem.image}/library_600x900.jpg`}
-                  alt={gameItem.title}
-                  className="w-8"
-                />
-                <h1 className="p-2 w-2/6">{gameItem.title}</h1>
-                <h1 className="p-2 w-1/6">Nrs.{gameItem.price}</h1>
-                <h1 className="p-2 w-1/12">{gameItem.stock}</h1>
-                <h1 className="p-2 w-1/12">{gameItem.rating}</h1>
-                <div className="p-2 mr-6 w-1/6">
-                  {gameItem.visible ? (
-                    <span className="inline-block bg-green-300 rounded-full px-3 py-1 text-xs text-green-800">
-                      Active
-                    </span>
-                  ) : (
-                    <span className="inline-block bg-red-300 rounded-full px-3 py-1 text-xs text-red-800">
-                      Hidden
-                    </span>
-                  )}
-                </div>
-                <div className="flex w-1/6 gap-2 text-gray-500">
-                  <div className="p-2 rounded-full hover:bg-blue-100 transition-colors cursor-pointer group">
-                    <Pencil className="h-5 w-5 group-hover:text-blue-500 transition-colors" />
+              <div key={gameItem.id}>
+                <div className="flex items-center text-black py-4 ">
+                  <img
+                    src={`https://cdn.akamai.steamstatic.com/steam/apps/${gameItem.image}/library_600x900.jpg`}
+                    alt={gameItem.title}
+                    className="w-8 rounded-sm"
+                  />
+                  <h1 className="p-2 w-2/6 font-semibold">
+                    {gameItem.title} <p className="text-sm text-gray-600 font-normal">{gameItem.developer}</p>
+                  </h1>
+
+                  <h1 className="p-2 w-1/6 ">Nrs.{gameItem.price}</h1>
+                  <h1 className="p-2 w-1/12">{gameItem.stock}</h1>
+                  <h1 className="p-2 w-1/12 text-yellow-600">★ {gameItem.rating}</h1>
+                  <div className="p-2 mr-6 w-1/6">
+                    {gameItem.visible ? (
+                      <span className="inline-block bg-green-300 font-semibold rounded-full px-3 py-1 text-xs text-green-800">
+                        Active
+                      </span>
+                    ) : (
+                      <span className="inline-block bg-red-300 rounded-full font-semibold px-3 py-1 text-xs text-red-800">
+                        Hidden
+                      </span>
+                    )}
                   </div>
-                  <div className="p-2 rounded-full hover:bg-red-100 transition-colors cursor-pointer group">
-                    <Trash2
+                  <div className="flex w-1/6 gap-2 text-gray-500">
+                    <div className="p-2 rounded-full hover:bg-blue-100 transition-colors cursor-pointer group">
+                      <Pencil className="h-5 w-5 group-hover:text-blue-500 transition-colors" />
+                    </div>
+                    <div
                       onClick={() => handleDelete(gameItem.id)}
-                      className="h-5 w-5 group-hover:text-red-500 transition-colors"
-                    />
+                      className="p-2 rounded-full hover:bg-red-100 transition-colors cursor-pointer group"
+                    >
+                      <Trash2 className="h-5 w-5 group-hover:text-red-500 transition-colors" />
+                    </div>
                   </div>
                 </div>
+                <hr className="w-full border-gray-200" />
               </div>
             ))}
           </div>
