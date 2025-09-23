@@ -1,7 +1,7 @@
 import React from "react";
-import { Hourglass } from "react-loader-spinner";
+import { Hourglass, BallTriangle } from "react-loader-spinner";
 
-const Loader = () => {
+export const Loader = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-black">
       <Hourglass
@@ -15,4 +15,17 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+export const BallLoader = () => {
+  return (
+    <div className="flex  justify-center mt-40  h-screen ">
+      <BallTriangle
+        height={100}
+        width={100}
+        radius={5}
+        color="blue"
+        ariaLabel="ball-triangle-loading"
+        visible={true}
+      />
+    </div>
+  );
+};

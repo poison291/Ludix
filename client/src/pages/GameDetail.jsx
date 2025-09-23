@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { getGameDetails } from "../Api/gameApi";
 import BreadCrumbs from "../components/BreadCrumbs";
 import Navbar from "../components/Navbar";
-import Loader from "../components/Loader";
+import { Loader, BallLoader } from "../components/Loader";
+
 
 const GameDetail = () => {
   const { id } = useParams();
