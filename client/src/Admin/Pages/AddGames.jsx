@@ -5,7 +5,8 @@ import { getGame } from "../../Api/gameApi";
 import { getGameDetails } from "../../Api/gameApi";
 import CategoryDropdown from "../Components/CategoryDropDown";
 import { deleteGame } from "../../Api/gameApi";
-import { Loader, BallLoader } from "../../components/Loader";
+import { HourglassLoader, BallLoader } from "../../components/Loader";
+
 
 const AddGames = () => {
   const [game, setGame] = useState([]);

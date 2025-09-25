@@ -3,9 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getGameDetails } from "../Api/gameApi";
 import BreadCrumbs from "../components/BreadCrumbs";
-import Navbar from "../components/Navbar";
-import { Loader, BallLoader } from "../components/Loader";
-
+import { LineWaveLoader } from "../components/Loader";
 
 const GameDetail = () => {
   const { id } = useParams();
@@ -22,28 +20,26 @@ const GameDetail = () => {
     fetchGameData();
   }, [id]);
 
-  if (loading)
-    return (
-      <Loader/>
-    );
+  if (loading) return <LineWaveLoader />;
   if (!gameData) return <p>Game not found!</p>;
 
   return (
     <>
+    
+    
       <div className="p-6 bg-black min-h-screen text-white">
-        <Navbar />
-        <div className="ml-10">
+        <div className="ml-15">
           <BreadCrumbs title={gameData.title} />
         </div>
-        <h1 className="text-3xl font-bold mb-4">{gameData.title}</h1>
-        <img
-          src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${gameData.image}/library_600x900.jpg`}
-          alt={gameData.title}
-          className="w-32 h-44 object-cover"
-        />
-        {/* <p className="mt-4">{game.description}</p> */}
-        <p className="mt-2 font-semibold">Price: {gameData.price}</p>
-        <p className="mt-2 font-semibold">date: {gameData.release_date}</p>
+          
+        <div className="mt-10 w-auto ml-15 flex">
+          <img
+            src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${gameData.image}/library_600x900.jpg`}
+            alt={gameData.title}
+            className="w-65 h-auto saturate-105 rounded-xl shadow-xl shadow-gray-900 "
+          />
+          <h1 className="text-2xl font-bold ml-10">{gameData.title}</h1>
+        </div>
       </div>
     </>
   );

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import 'tailwind-scrollbar-hide/v4';
 
 @theme {
   --color-primary: #131731;
@@ -11,5 +12,7 @@
   --background-image-gradient-text: linear-gradient(to right, #ffffff, #b45cff, #00CFFF);
  --background-image-gradient-button: linear-gradient(to right, #341963, #2a3750);
 }
+
+
 
 

@@ -109,9 +109,9 @@ const Landing = () => {
         {/* <PremiumCard /> */}
 
       </div>
-      <div>
-        <Topsell/>
-      </div>
+      {/* <div>
+          <Topsell/>
+      </div> */}
     </>
   );
 };
