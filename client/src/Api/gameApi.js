@@ -51,4 +51,18 @@ export async function deleteGame(id) {
   }
 }
 
-///
+// Function To get toprated games
+export async function topRated() {
+  try {
+    const res = await fetch(`${BASE_URL}/games/top-rated`)
+    if (!res.ok) {
+      throw new Error("Faile to Fetch Top rated Games");
+    }
+    const data = await res.json();
+    console.log(data.data);
+    return data.data;
+
+  } catch (error) {
+    console.log(`Erorr while Getting top rated game: ${error}`)
+  }
+}

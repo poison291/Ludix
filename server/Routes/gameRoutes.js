@@ -4,11 +4,13 @@ import {
   deleteGame,
   getGame,
   getGames,
+  topRated,
   updateGames,
 } from "../Controllers/gameController.js";
 
 const router = express.Router();
 
+router.get("/top-rated", topRated);
 router.get("/", getGames);
 router.get("/:id", getGame);
 router.post("/", createGames);

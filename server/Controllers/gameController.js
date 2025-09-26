@@ -160,3 +160,18 @@ export const deleteGame = async (req, res) => {
     res.status(500).json({ success: false, message: "Internal Server Error!" });
   }
 };
+
+
+//Get Top rated Games
+export const topRated =async (req, res) => {
+  try {
+    const game = await sql`SELECT title, rating FROM games 
+    ORDER BY rating DESC LIMIT 20;`
+    
+    console.log(`fetched Games: ${game}`);
+    res.status(200).json({ success: true, data: game });
+  } catch (error) {
+    console.log(`Error while getting top rated game: ${error}`)
+    res.status(500).json({success: false, message: "Internal server Error"})
+  }
+}

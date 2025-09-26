@@ -19,8 +19,8 @@ const Navbar = ({ bgColor }) => {
           <NavLink to="/games" className={navLinkClass}>
             Games
           </NavLink>
-          <NavLink to="/bundles" className={navLinkClass}>
-            Bundle
+          <NavLink to="/games/toprated" className={navLinkClass}>
+            Top Rated
           </NavLink>
           <NavLink to="/support" className={navLinkClass}>
             Support

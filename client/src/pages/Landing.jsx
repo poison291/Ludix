@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Star, Play, ChevronDown } from "lucide-react";
+import { Star, Play, ChevronDown, MessageCircle } from "lucide-react";
 import PremiumCard from "../components/PremiumCard";
 import { useNavigate } from "react-router-dom";
 import Topsell from "../components/Topsell";
@@ -14,8 +14,8 @@ const Landing = () => {
     navigate("/games");
   };
 
-  const handleBundle = () => {
-    navigate("/bundles");
+  const handleDisocrd = () => {
+     window.open("https://discord.gg/zsQV6DC5tX", "_blank");
   };
 
   useEffect(() => {
@@ -73,14 +73,14 @@ const Landing = () => {
               Browse Games
             </button>
             <button
-              onClick={handleBundle}
+                onClick={handleDisocrd}
               className="group bg-[#2a3750] px-7 py-5 rounded-2xl flex items-center gap-2 
                      hover:bg-gray-600 transform hover:scale-110 transition duration-300 
                      border border-gray-600"
             >
-              View Bundles
+              Join Discord
               <span className="transform transition-transform duration-300 group-hover:translate-y-1">
-                <ChevronDown size={18} />
+                 <MessageCircle size={18} />
               </span>
             </button>
           </div>
@@ -109,9 +109,7 @@ const Landing = () => {
         {/* <PremiumCard /> */}
 
       </div>
-      {/* <div>
-          <Topsell/>
-      </div> */}
+
     </>
   );
 };

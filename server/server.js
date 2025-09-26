@@ -39,27 +39,59 @@ app.use(async (req, res, next) => {
           error: "Forbidden",
         });
       }
-      return
+      return;
     }
-    if(decision.results.some((result) => result.reason.isBot() && result.reason.isSpoofed())){
+    if (
+      decision.results.some(
+        (result) => result.reason.isBot() && result.reason.isSpoofed()
+      )
+    ) {
       res.status(403).json({
-        error: "Spoof bot detected"
-      })
+        error: "Spoof bot detected",
+      });
     }
-    next()
+    next();
   } catch (error) {
-    console.log(`Arcjet Error: ${error}`)
-    next(error)
+    console.log(`Arcjet Error: ${error}`);
+    next(error);
   }
 });
+app.get("/", (req, res) => {
+  res.send(`
+    <html>
+      <head>
+        <title>PlayPort API</title>
+      </head>
+      <body style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: sans-serif;
+        background-color: #1e1e1e; /* dark gray instead of pure black */
+        color: #e0e0e0; /* light text for contrast */
+        margin: 0;
+      ">
+        <div style="text-align: center;">
+          <h1 style="color: #9f7aea;">🎮 PlayPort API</h1>
+          <p style="font-size: 18px;">Server is running ✅</p>
+          <p>
+            Use <code style="color: #cbd5e1;">/api/games</code> to access games endpoints
+          </p>
+        </div>
+      </body>
+    </html>
+  `);
+});
+
 
 //Api Routes setup
 app.use("/api/games", gameRoutes);
 
 async function initDB() {
-  try { 
+  try {
     // await sql`DROP TABLE games`
-   await sql`
+    await sql`
       CREATE TABLE IF NOT EXISTS games(
       id SERIAL PRIMARY KEY,
       title VARCHAR(255) NOT NULL,
