@@ -4,8 +4,10 @@ import helmet from "helmet";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import gameRoutes from "./Routes/gameRoutes.js";
-import { sql } from "./config/db.js";
 import { aj } from "./lib/arcjet.js";
+import authRoutes from "./Routes/auth.js"
+import { initGamesTable } from "./models/game.js";
+import { initUsersTable } from "./models/user.js";
 
 dotenv.config();
 
@@ -21,41 +23,41 @@ app.use(cors());
 //apply arcjet rate limit
 app.use(async (req, res, next) => {
   try {
-    const decision = await aj.protect(req, {
-      requested: 1, //
-    });
+    // bypass Arcjet on localhost or 127.0.0.1
+    const host = req.headers.host || "";
+    if (host.includes("localhost") || host.includes("127.0.0.1")) {
+      return next();
+    }
+
+    const decision = await aj.protect(req, { requested: 1 });
 
     if (decision.isDenied()) {
       if (decision.reason.isRateLimit()) {
-        res.status(429).json({
-          error: "Too Many Request!",
-        });
-      } else if (decision.reason.isBot()) {
-        res.status(403).json({
-          error: "Bot Access Denied",
-        });
-      } else {
-        res.status(403).json({
-          error: "Forbidden",
-        });
+        return res.status(429).json({ error: "Too Many Requests!" });
       }
-      return;
+      if (decision.reason.isBot()) {
+        return res.status(403).json({ error: "Bot Access Denied" });
+      }
+      return res.status(403).json({ error: "Forbidden" });
     }
+
     if (
       decision.results.some(
         (result) => result.reason.isBot() && result.reason.isSpoofed()
       )
     ) {
-      res.status(403).json({
-        error: "Spoof bot detected",
-      });
+      return res.status(403).json({ error: "Spoof bot detected" });
     }
+
     next();
   } catch (error) {
-    console.log(`Arcjet Error: ${error}`);
+    console.error("Arcjet Error:", error);
     next(error);
   }
 });
+
+
+
 app.get("/", (req, res) => {
   res.send(`
     <html>
@@ -87,39 +89,22 @@ app.get("/", (req, res) => {
 
 //Api Routes setup
 app.use("/api/games", gameRoutes);
+app.use("/api/users", authRoutes)
 
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+// DB initialized function
 async function initDB() {
   try {
-    // await sql`DROP TABLE games`
-    await sql`
-      CREATE TABLE IF NOT EXISTS games(
-      id SERIAL PRIMARY KEY,
-      title VARCHAR(255) NOT NULL,
-      price DECIMAL(10,2) NOT NULL CHECK (price >= 0),
-      image TEXT NOT NULL,
-      categories TEXT[] NOT NULL,
-      description TEXT NOT NULL,
-      stock INT DEFAULT 0 CHECK (stock >= 0),
-      visible BOOLEAN DEFAULT true,
-      platforms TEXT[] NOT NULL,
-      tags TEXT[] NOT NULL,
-      release_date VARCHAR(100) NOT NULL,
-      developer VARCHAR(255) NOT NULL,
-      publisher VARCHAR(255) NOT NULL,
-      rating DECIMAL(2,1) CHECK (rating >= 0 AND rating <= 5) NOT NULL,
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-      )
-      `;
-
-    console.log(`DATABASE INITIALIZED SUCCESFULLY!!`);
-  } catch (error) {
-    console.log(`Error initializing Database: ${error}`);
-    throw error;
+    await initGamesTable();
+    await initUsersTable();
+    console.log("Database initialized");
+  } catch (err) {
+    console.error("DB initialization error:", err);
   }
 }
 
-initDB().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-  });
-});
+initDB();

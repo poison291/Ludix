@@ -58,7 +58,7 @@ const Games = () => {
               <h2 className="text-base font-bold text-green-400 mb-3">
                 Nrs. {game.price}
               </h2>
-              <button className="w-full py-2 text-sm rounded-lg bg-purple-700 font-medium transition-all duration-200 hover:bg-purple-800 active:scale-95 cursor-pointer">
+              <button className="w-full py-2 text-sm rounded-lg bg-green-700 font-medium transition-all duration-200 hover:bg-purple-800 active:scale-95 cursor-pointer">
                 Buy Now
               </button>
             </div>

@@ -66,3 +66,6 @@ export async function topRated() {
     console.log(`Erorr while Getting top rated game: ${error}`)
   }
 }
+
+
+

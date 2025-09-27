@@ -5,7 +5,7 @@ export const getGames = async (req, res) => {
   try {
     const game = await sql`
       SELECT * FROM games
-      ORDER BY created_at ASC 
+      ORDER BY created_at DESC 
       `;
     console.log(`fetched Games: ${game}`);
     res.status(200).json({ success: true, data: game });
@@ -165,8 +165,8 @@ export const deleteGame = async (req, res) => {
 //Get Top rated Games
 export const topRated =async (req, res) => {
   try {
-    const game = await sql`SELECT title, rating FROM games 
-    ORDER BY rating DESC LIMIT 20;`
+    const game = await sql`SELECT * FROM games 
+    ORDER BY rating DESC LIMIT 5;`
     
     console.log(`fetched Games: ${game}`);
     res.status(200).json({ success: true, data: game });

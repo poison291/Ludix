@@ -10,6 +10,8 @@ import Games from "../pages/Games";
 import GameDetail from "../pages/GameDetail";
 import AdminDashboard from "../Admin/AdminDashboard";
 import TopRated from "../pages/TopRated";
+import SignIn from "../Auth/SignIn";
+import SignUp from "../Auth/Signup";
 
 const Approutes = () => {
   const router = createBrowserRouter([
@@ -37,6 +39,15 @@ const Approutes = () => {
       path: "/admin",
       element: <AdminDashboard />,
     },
+    {
+
+      path: "/login",
+      element: <SignIn/>
+    },
+    {
+      path: "/register",
+      element: <SignUp />
+    }
   ]);
   return <RouterProvider router={router} />;
 };
