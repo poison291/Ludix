@@ -1,32 +1,29 @@
 import React, { useEffect, useState } from "react";
 import BreadCrumbs from "../components/BreadCrumbs";
 import { getGame } from "../Api/gameApi";
-import {  LineWaveLoader } from "../components/Loader";
+import { LineWaveLoader } from "../components/Loader";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import useGameStore from "../Store/gameStore";
 
 const Games = () => {
-  const [gameData, setgameData] = useState([]);
-  const [loading, setloading] = useState(true);
-  const {id} = useParams()
-  const navigate = useNavigate()
+
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const games = useGameStore((state) => state.games) ;
+  const loading = useGameStore((state) => state.loading.games);
+  const fetchedGames = useGameStore((state) => state.fetchedGames);
 
   useEffect(() => {
-    async function fetchData() {
-      const result = await getGame();
-      if (result.success) {
-        setgameData(result.data);
-      }
-      setloading(false);
-    }
-    fetchData();
-  }, []);
+    fetchedGames();
+  }, [fetchedGames]);
 
   const handleClick = (gameId) => {
-    navigate(`/games/${gameId}` )
-  }
+    navigate(`/games/${gameId}`);
+  };
 
-  const visibleGames = gameData.filter((game) => game.visible === true);
+  const visibleGames = games.filter((game) => game.visible === true);
 
   if (loading) return <LineWaveLoader />;
 

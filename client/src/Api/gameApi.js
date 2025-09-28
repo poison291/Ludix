@@ -11,7 +11,7 @@ export async function getGame() {
       throw new Error("Failed to Fetch Game data");
     }
     const data = await res.json();
-    return data;
+    return data.data;
   } catch (error) {
     console.log(`Error While Fetching Game: ${error}`);
   }
