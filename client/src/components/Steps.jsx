@@ -26,12 +26,11 @@ const Steps = () => {
     },
   ];
 
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
-    const handleclick = () => {
-        navigate("/games"),
-         window.scrollTo(0, 0); 
-    }
+  const handleclick = () => {
+    navigate("/games"), window.scrollTo(0, 0);
+  };
 
   return (
     <>
@@ -60,13 +59,13 @@ const Steps = () => {
           <h1 className="text-lg">Ready To Get Started?</h1>
         </div>
         <div className="flex items-center justify-center mt-5">
-        <button 
-        onClick={() => handleclick()}
-        className="bg-purple-700 px-5 py-2 cursor-pointer rounded-4xl flex items-center gap-2 hover:bg-purple-600 ">
-          Browse Games Now
-        </button>
+          <button
+            onClick={() => handleclick()}
+            className="bg-purple-700 px-5 py-2 cursor-pointer rounded-4xl flex items-center gap-2 hover:bg-purple-600 "
+          >
+            Browse Games Now
+          </button>
         </div>
-            
       </div>
     </>
   );

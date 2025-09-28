@@ -5,14 +5,20 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import gameRoutes from "./Routes/gameRoutes.js";
 import { aj } from "./lib/arcjet.js";
-import authRoutes from "./Routes/auth.js"
+import authRoutes from "./Routes/auth.js";
 import { initGamesTable } from "./models/game.js";
 import { initUsersTable } from "./models/user.js";
+import { Resend } from "resend";
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5001;
 
 //MiddleWares
 app.use(helmet());
@@ -25,9 +31,9 @@ app.use(async (req, res, next) => {
   try {
     // bypass Arcjet on localhost or 127.0.0.1
     const host = req.headers.host || "";
-    if (host.includes("localhost") || host.includes("127.0.0.1")) {
-      return next();
-    }
+    // if (host.includes("localhost") || host.includes("127.0.0.1")) {
+    //   return next();
+    // }
 
     const decision = await aj.protect(req, { requested: 1 });
 
@@ -56,41 +62,22 @@ app.use(async (req, res, next) => {
   }
 });
 
-
-
 app.get("/", (req, res) => {
-  res.send(`
-    <html>
-      <head>
-        <title>ludix API</title>
-      </head>
-      <body style="
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        font-family: sans-serif;
-        background-color: #1e1e1e; /* dark gray instead of pure black */
-        color: #e0e0e0; /* light text for contrast */
-        margin: 0;
-      ">
-        <div style="text-align: center;">
-          <h1 style="color: #9f7aea;">🎮 ludix API</h1>
-          <p style="font-size: 18px;">Server is running ✅</p>
-          <p>
-            Use <code style="color: #cbd5e1;">/api/games</code> to access games endpoints
-          </p>
-        </div>
-      </body>
-    </html>
-  `);
+  res.sendFile(path.join(__dirname, "index.html"));
 });
-
 
 //Api Routes setup
 app.use("/api/games", gameRoutes);
-app.use("/api/users", authRoutes)
+app.use("/api/users", authRoutes);
 
+app.get("/api", (req, res) => {
+  res.json({
+    endpoints: [
+      { method: "GET", path: "/api/games", description: "Get all games" },
+      { method: "GET", path: "/api/users", description: "Get all users" },
+    ],
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

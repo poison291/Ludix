@@ -3,9 +3,7 @@ import Navbar from "../components/Navbar";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Star, Play, ChevronDown, MessageCircle } from "lucide-react";
-import PremiumCard from "../components/PremiumCard";
 import { useNavigate } from "react-router-dom";
-import Topsell from "../components/Topsell";
 import Steps from "../components/Steps";
 
 const Landing = () => {
@@ -16,7 +14,7 @@ const Landing = () => {
   };
 
   const handleDisocrd = () => {
-     window.open("https://discord.gg/zsQV6DC5tX", "_blank");
+    window.open("https://discord.gg/zsQV6DC5tX", "_blank");
   };
 
   useEffect(() => {
@@ -74,14 +72,14 @@ const Landing = () => {
               Browse Games
             </button>
             <button
-                onClick={handleDisocrd}
+              onClick={handleDisocrd}
               className="group bg-[#2a3750] px-7 py-5 rounded-2xl flex items-center gap-2 
                      hover:bg-gray-600 transform hover:scale-110 transition duration-300 
                      border border-gray-600"
             >
               Join Discord
               <span className="transform transition-transform duration-300 group-hover:translate-y-1">
-                 <MessageCircle size={18} />
+                <MessageCircle size={18} />
               </span>
             </button>
           </div>
@@ -108,12 +106,10 @@ const Landing = () => {
         </div>
         {/* Right Section */}
         {/* <PremiumCard /> */}
-
       </div>
       <div>
-        <Steps/>
+        <Steps />
       </div>
-
     </>
   );
 };
