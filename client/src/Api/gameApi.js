@@ -35,7 +35,6 @@ export async function getGameDetails(id) {
 }
 
 
-
 //Function to delete particular game
 
 export async function deleteGame(id) {

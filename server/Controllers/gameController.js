@@ -7,7 +7,7 @@ export const getGames = async (req, res) => {
       SELECT * FROM games
       ORDER BY created_at DESC 
       `;
-    console.log(`fetched Games: ${game}`);
+    // console.log(`fetched Games: ${game}`);
     res.status(200).json({ success: true, data: game });
   } catch (error) {
     console.log(`Error while Getting games ${error}`);

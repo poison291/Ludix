@@ -39,7 +39,6 @@ const TopRated = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-20">
         {visibleGames.map((game) => (
           <div
-          onClick={() => {handleClick()}}
             key={game.id}
             onClick={() => handleClick(game.id)}
             className="group mb-10 text-white flex flex-col bg-[#1b242b] rounded-2xl border border-gray-700 overflow-hidden cursor-pointer transition-all duration-300 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-3"
