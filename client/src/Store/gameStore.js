@@ -1,6 +1,7 @@
 import {create} from "zustand"
 import {getGame, gameDetails} from "../Api/gameApi.js"
 
+//Creating gamestore state
 const useGameStore = ((set, get) => ({
     games: [],
     gameDetails: {},
