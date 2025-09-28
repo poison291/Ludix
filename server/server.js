@@ -62,7 +62,7 @@ app.get("/", (req, res) => {
   res.send(`
     <html>
       <head>
-        <title>PlayPort API</title>
+        <title>ludix API</title>
       </head>
       <body style="
         display: flex;
@@ -75,7 +75,7 @@ app.get("/", (req, res) => {
         margin: 0;
       ">
         <div style="text-align: center;">
-          <h1 style="color: #9f7aea;">🎮 PlayPort API</h1>
+          <h1 style="color: #9f7aea;">🎮 ludix API</h1>
           <p style="font-size: 18px;">Server is running ✅</p>
           <p>
             Use <code style="color: #cbd5e1;">/api/games</code> to access games endpoints

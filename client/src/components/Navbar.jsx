@@ -23,8 +23,8 @@ const Navbar = ({ bgColor }) => {
       {/* Logo */}
       <div>
         <NavLink to="/">
-          <h1 className="bg-gradient-to-r from-purple-600 via-violet-600 to-cyan-400 font-bold text-2xl bg-clip-text text-transparent">
-            PlayPort
+          <h1 className="bg-gradient-to-r from-purple-600 via-violet-600 to-cyan-400 font-bold ml-33 text-2xl bg-clip-text text-transparent">
+            Ludix
           </h1>
         </NavLink>
       </div>

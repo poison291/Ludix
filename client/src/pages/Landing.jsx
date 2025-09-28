@@ -6,6 +6,7 @@ import { Star, Play, ChevronDown, MessageCircle } from "lucide-react";
 import PremiumCard from "../components/PremiumCard";
 import { useNavigate } from "react-router-dom";
 import Topsell from "../components/Topsell";
+import Steps from "../components/Steps";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Landing = () => {
 
   return (
     <>
-      <div className="bg-black min-h-screen ">
+      <div className="bg-black min-h-screen">
         <Navbar bgColor="bg-black" />
         {/* Left section */}
         <div
@@ -108,6 +109,9 @@ const Landing = () => {
         {/* Right Section */}
         {/* <PremiumCard /> */}
 
+      </div>
+      <div>
+        <Steps/>
       </div>
 
     </>

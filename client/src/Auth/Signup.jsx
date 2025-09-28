@@ -39,7 +39,7 @@ export default function SignUp() {
             Create Your Account
           </h1>
           <p className="mt-2 text-sm text-zinc-400">
-            Join PlayPort and start your gaming journey.
+            Join ludix and start your gaming journey.
           </p>
         </div>
 

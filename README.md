@@ -1,10 +1,10 @@
-# Playport 🎮
+# ludix 🎮
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![React](https://img.shields.io/badge/React-18.2.0-blue)](https://reactjs.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-20.x-green)](https://nodejs.org/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v4.0-blue)](https://tailwindcss.com/)
 
-**Playport** is a modern, full-stack **game selling platform** with a robust client-server architecture. It includes a **powerful admin dashboard**, semi-automated payment gateway, and a sleek frontend built with **React + TailwindCSS v4**. Perfect for managing games, users, orders, and analytics seamlessly.
+**ludix** is a modern, full-stack **game selling platform** with a robust client-server architecture. It includes a **powerful admin dashboard**, semi-automated payment gateway, and a sleek frontend built with **React + TailwindCSS v4**. Perfect for managing games, users, orders, and analytics seamlessly.
 
 ---
 
@@ -67,8 +67,8 @@
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/poison291/playport.git
-cd playport
+git clone https://github.com/poison291/ludix.git
+cd ludix
 ```
 
 2. **Install dependencies**
@@ -98,7 +98,7 @@ npm run dev
 ## Project Structure
 
 ```
-Playport/
+ludix/
 ├─ client/
 │  ├─ src/
 │  │  ├─ Admin/

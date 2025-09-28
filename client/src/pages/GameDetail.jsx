@@ -10,12 +10,11 @@ const GameDetail = () => {
   const { id } = useParams();
 
   const gameDetails = useGameStore((state) => state.gameDetails[id]);
-  const loading = useGameStore((state) => state.loading[id]); 
+  const loading = useGameStore((state) => state.loading[id]);
   const fetchGameDetail = useGameStore((state) => state.fetchGameDetail);
 
   useEffect(() => {
     if (!gameDetails) {
-  
       fetchGameDetail(id);
     }
   }, [id, gameDetails, fetchGameDetail]);

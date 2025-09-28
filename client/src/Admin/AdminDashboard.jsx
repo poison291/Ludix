@@ -36,7 +36,7 @@ const AdminDashboard = () => {
 
   const [activePage, setactivePage] = useState("Games");
 
-  console.log(activePage);
+  console.log(`Active Page: ${activePage}`);
   return (
     <>
       <div className="flex">
