@@ -13,7 +13,7 @@ export default function SignUp() {
     };
 
     try {
-      const res = await fetch(`http://localhost:5001/api/users`, {
+      const res = await fetch(`https://sharika-unchipped-allonymously.ngrok-free.dev/api/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

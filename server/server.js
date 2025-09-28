@@ -24,16 +24,23 @@ const PORT = process.env.PORT || 5001;
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://ludix.vercel.app",
+  })
+);
 
 //apply arcjet rate limit
 app.use(async (req, res, next) => {
   try {
-    // bypass Arcjet on localhost or 127.0.0.1
     const host = req.headers.host || "";
-    // if (host.includes("localhost") || host.includes("127.0.0.1")) {
-    //   return next();
-    // }
+    if (
+      host.includes("localhost") ||
+      host.includes("127.0.0.1") ||
+      host.includes("vercel.app")
+    ) {
+      return next(); // bypass Arcjet for your Vercel frontend
+    }
 
     const decision = await aj.protect(req, { requested: 1 });
 
@@ -80,7 +87,9 @@ app.get("/api", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(
+    `Server is running https://sharika-unchipped-allonymously.ngrok-free.dev/`
+  );
 });
 
 // DB initialized function
