@@ -19,6 +19,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 5001;
+const URL = process.env.BACKEND_URL
 
 //MiddleWares
 app.use(helmet());
@@ -26,7 +27,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://ludix.vercel.app",
+    origin: ["https://ludix.vercel.app", "http://localhost:5173"],
   })
 );
 
@@ -39,7 +40,7 @@ app.use(async (req, res, next) => {
       host.includes("127.0.0.1") ||
       host.includes("vercel.app")
     ) {
-      return next(); // bypass Arcjet for your Vercel frontend
+      return next();
     }
 
     const decision = await aj.protect(req, { requested: 1 });
@@ -88,7 +89,7 @@ app.get("/api", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(
-    `Server is running https://sharika-unchipped-allonymously.ngrok-free.dev/`
+    `Server is running on ${URL}`
   );
 });
 
