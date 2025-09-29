@@ -5,6 +5,8 @@ import "aos/dist/aos.css";
 import { Star, Play, ChevronDown, MessageCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Steps from "../components/Steps";
+import Slider from "react-slick";
+import GameSlider from "../components/Slider";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -104,12 +106,17 @@ const Landing = () => {
             </span>
           </div>
         </div>
-        {/* Right Section */}
-        {/* <PremiumCard /> */}
       </div>
+
+          <div className="bg-black text-white pt-20">
+        <h1 className="text-center text-4xl font-bold">Top Games</h1>
+        <GameSlider/>
+      </div>
+
       <div>
         <Steps />
       </div>
+      
     </>
   );
 };

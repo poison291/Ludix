@@ -6,7 +6,7 @@ import { BallLoader } from "../../components/Loader";
 import useGameStore from "../../Store/gameStore.js";
 
 const AddGames = () => {
-  const [filteredGames, setFilteredGames] = useState([]);
+    const [filteredGames, setFilteredGames] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
 

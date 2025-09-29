@@ -5,7 +5,7 @@ const BASE_URL = import.meta.env.VITE_API_BASE + "/api";
 
 //Function to get list of all Games
 export async function getGame() {
-  console.log(BASE_URL)
+  console.log(`Base url:-${BASE_URL}`)
   try {
     const res = await fetch(`${BASE_URL}/games`);
     if (!res.ok) {
