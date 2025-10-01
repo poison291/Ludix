@@ -12,6 +12,8 @@ import AdminDashboard from "../Admin/AdminDashboard";
 import TopRated from "../pages/TopRated";
 import SignIn from "../Auth/SignIn";
 import SignUp from "../Auth/Signup";
+import Feedback from "../pages/Feedback";
+import Bugs from "../pages/Bugs";
 
 const Approutes = () => {
   const router = createBrowserRouter([
@@ -47,7 +49,16 @@ const Approutes = () => {
     {
       path: "/register",
       element: <SignUp />
-    }
+    },
+    {
+
+      path: "/bugs",
+      element: <Bugs/>
+    },
+    {
+      path: "/feedback",
+      element: <Feedback/>
+    },
   ]);
   return <RouterProvider router={router} />;
 };

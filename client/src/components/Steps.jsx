@@ -34,7 +34,7 @@ const Steps = () => {
 
   return (
     <>
-      <div className="bg-black min-h-screen text-white pt-20 select-none">
+      <div className="bg-black/95 min-h-screen text-white pt-20 select-none">
         <div className="flex items-center justify-center ">
           <h1 className="text-4xl md:text-4xl font-bold mb-10">
             How It <span className="text-purple-500 ">Works</span>
@@ -44,7 +44,7 @@ const Steps = () => {
           {steps.map((step, index) => (
             <div
               data-aos="fade-down"
-              className="bg-[#1b242b] hover:bg-[#1b2126] border-purple-500  border rounded-2xl py-5 text-center  "
+              className="bg-[#111826] hover:bg-[#1b2126] border-purple-500  border rounded-2xl py-5 text-center  "
               key={index}
             >
               <span className="flex justify-center items-center mb-4 bg-purple-600 w-16 h-16 rounded-full m-auto text-white">

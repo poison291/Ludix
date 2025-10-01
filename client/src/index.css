@@ -1,20 +1,29 @@
 @import 'tailwindcss';
 @import 'tailwind-scrollbar-hide/v4';
 
+/* Theme colors and gradients */
 @theme {
-  --color-primary: #131731;
-  --color-button: #2a3750;
-  --color-secondary: #341963;
-  --color-text-primary: #E0E0E0;
-  --color-text-secondary: #B0B0C0;
+  /* Base backgrounds */
+  --color-primary: #131731; /* Darkest background */
+  --color-secondary: #1b1f2a; /* Slightly lighter for alternating sections */
+  --color-card: #111826; /* Card backgrounds */
 
+  /* Buttons and highlights */
+  --color-button: #7c3aed; /* Primary purple */
+  --color-button-hover: #9333ea; /* Hover / active */
+  --color-accent: #0ea5e9; /* Cyan accent for links, glows */
+  --color-accent-alt: #14b8a6; /* Teal accent for secondary buttons or hover */
+
+  /* Text */
+  --color-text-primary: #f8f8f2; /* Soft white main text */
+  --color-text-secondary: #9ca3af; /* Gray secondary text */
+  --color-text-hover: #d8b4fe; /* Highlighted / hover text */
+
+  /* Gradients */
   --background-image-gradient-bg: linear-gradient(135deg, #34196333 0%, #2a375033 50%, #00CFFF33 100%);
   --background-image-gradient-text: linear-gradient(to right, #ffffff, #b45cff, #00CFFF);
- --background-image-gradient-button: linear-gradient(to right, #341963, #2a3750);
+  --background-image-gradient-button: linear-gradient(to right, #341963, #2a3750);
 }
-
-
-
 
 @layer utilities {
   .scrollbar-hide {
@@ -23,5 +32,15 @@
   }
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Optional hover card effect utility */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 15px 25px rgba(124, 58, 237, 0.3);
+    color: var(--color-text-hover);
   }
 }

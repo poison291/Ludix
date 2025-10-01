@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Steps from "../components/Steps";
 import Slider from "react-slick";
 import GameSlider from "../components/Slider";
+import Improve from "../components/Improve";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -108,15 +109,17 @@ const Landing = () => {
         </div>
       </div>
 
-          <div className="bg-black text-white pt-20">
+          {/* <div className="bg-black text-white pt-20">
         <h1 className="text-center text-4xl font-bold">Top Games</h1>
         <GameSlider/>
-      </div>
+      </div> */}
 
       <div>
         <Steps />
       </div>
-      
+      <div>
+        <Improve/>
+      </div>
     </>
   );
 };
