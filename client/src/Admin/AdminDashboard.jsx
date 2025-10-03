@@ -6,6 +6,7 @@ import {
   ChartNoAxesCombined,
   Bell,
   Settings,
+  MessageCircleWarning,
 } from "lucide-react";
 import React, { useState } from "react";
 import Dashboard from "./Pages/Dashboard";
@@ -14,6 +15,7 @@ import Games from "./Pages/AddGames";
 import SettingPage from "./Pages/SettingPage";
 import Orders from "./Pages/Orders";
 import Analytics from "./Pages/Analytics";
+import Reports from "./Pages/Reports";
 
 const AdminDashboard = () => {
   const menuItem = [
@@ -22,6 +24,7 @@ const AdminDashboard = () => {
     { name: "Orders", icon: <ShoppingCart size={18} /> },
     { name: "Users", icon: <UserRoundIcon size={18} /> },
     { name: "Analytics", icon: <ChartNoAxesCombined size={18} /> },
+    { name: "Reports", icon: <MessageCircleWarning  size={18} /> },
     { name: "Setting", icon: <Settings size={18} /> },
   ];
 
@@ -31,6 +34,7 @@ const AdminDashboard = () => {
     Orders: <Orders />,
     Users: <Users/>,
     Analytics: <Analytics />,
+    Reports: <Reports/>,
     Setting: <SettingPage />,
   };
 
@@ -44,7 +48,7 @@ const AdminDashboard = () => {
         <div className="w-64 h-screen bg-white shadow-2xl flex-col flex fixed text-gray-700">
           <h1 className="font-bold text-xl pt-5 ml-9 flex gap-2 mb-12 text-black">
             <Gamepad2 className="mt-1" />
-            GameStore
+            Ludix
           </h1>
 
           <nav className="flex flex-col gap-4">

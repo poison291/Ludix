@@ -11,16 +11,12 @@ import { useNavigate } from "react-router-dom";
 const Feedback = () => {
   const navigate = useNavigate();
 
-  const handleBug = () => {
-    navigate("/bugs");
+  const handleReport = (type) => {
+    navigate(`/reports?type=${type}`);
   };
   
-  const handleFeedback = () => {
-    navigate("/feedback");
-  };
-
   return (
-    <div className="bg-gray-950 text-white min-h-screen px-4 md:px-8 lg:px-16">
+    <div className="bg-black text-white min-h-screen px-4 md:px-8 lg:px-16">
       {/* Header */}
       <div className="py-10 md:py-16">
         <h1 className="font-bold text-4xl text-center mb-4">
@@ -48,7 +44,7 @@ const Feedback = () => {
             expected? Click here to report it.
           </p>
           <div
-           onClick={() => handleBug()}
+           onClick={() => handleReport("bug")}
             className="flex items-center justify-center gap-2 font-semibold text-purple-600 cursor-pointer mx-auto"
             
           >
@@ -70,7 +66,7 @@ const Feedback = () => {
             We'd love to hear from you.
           </p>
           <div
-           onClick={() => handleFeedback()}
+           onClick={() => handleReport("feedback")}
           className="flex items-center justify-center gap-2 font-semibold text-purple-600 cursor-pointer mx-auto">
             <span>Send Feedback</span>
             <SendHorizontal />

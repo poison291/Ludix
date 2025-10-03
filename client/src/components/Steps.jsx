@@ -34,7 +34,7 @@ const Steps = () => {
 
   return (
     <>
-      <div className="bg-black/95 min-h-screen text-white pt-20 select-none">
+      <div className="bg-black min-h-screen text-white pt-20 select-none">
         <div className="flex items-center justify-center ">
           <h1 className="text-4xl md:text-4xl font-bold mb-10">
             How It <span className="text-purple-500 ">Works</span>
@@ -62,7 +62,7 @@ const Steps = () => {
           <button
             onClick={() => handleclick()}
             className="bg-purple-700 px-5 py-2 cursor-pointer rounded-4xl flex items-center gap-2 hover:bg-purple-600 "
-          >
+                >
             Browse Games Now
           </button>
         </div>

@@ -108,17 +108,11 @@ const Landing = () => {
           </div>
         </div>
       </div>
-
-          {/* <div className="bg-black text-white pt-20">
-        <h1 className="text-center text-4xl font-bold">Top Games</h1>
-        <GameSlider/>
-      </div> */}
-
       <div>
         <Steps />
       </div>
       <div>
-        <Improve/>
+        <Improve />
       </div>
     </>
   );

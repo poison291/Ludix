@@ -12,14 +12,18 @@ import AdminDashboard from "../Admin/AdminDashboard";
 import TopRated from "../pages/TopRated";
 import SignIn from "../Auth/SignIn";
 import SignUp from "../Auth/Signup";
-import Feedback from "../pages/Feedback";
-import Bugs from "../pages/Bugs";
+import ReportForm from "../pages/ReportForm";
+import NotFound from "../pages/404";
 
 const Approutes = () => {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Landing />,
+    },
+    {
+      path: "*",
+      element: <NotFound/>
     },
     {
       path: "/test",
@@ -52,12 +56,8 @@ const Approutes = () => {
     },
     {
 
-      path: "/bugs",
-      element: <Bugs/>
-    },
-    {
-      path: "/feedback",
-      element: <Feedback/>
+      path: "/reports",
+      element: <ReportForm />
     },
   ]);
   return <RouterProvider router={router} />;
