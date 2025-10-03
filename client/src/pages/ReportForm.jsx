@@ -37,6 +37,7 @@ const ReportForm = () => {
       ticket,
       message: cleanMessage,
       url,
+      reportType,
       status: "pending",
       created_at: new Date().toISOString(),
     };

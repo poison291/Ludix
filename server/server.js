@@ -4,11 +4,11 @@ import helmet from "helmet";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import gameRoutes from "./Routes/gameRoutes.js";
-import { aj } from "./lib/arcjet.js";
 import authRoutes from "./Routes/auth.js";
+import reportRoutes from "./Routes/reportRoutes.js"
+import { aj } from "./lib/arcjet.js";
 import { initGamesTable } from "./models/game.js";
 import { initUsersTable } from "./models/user.js";
-import { Resend } from "resend";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -77,6 +77,7 @@ app.get("/", (req, res) => {
 //Api Routes setup
 app.use("/api/games", gameRoutes);
 app.use("/api/users", authRoutes);
+app.use("/api/reports", reportRoutes)
 
 app.get("/api", (req, res) => {
   res.json({
