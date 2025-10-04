@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { Filter } from "bad-words";
 import ShortUniqueId from "short-uuid";
+import { submitReport } from "../Api/Reports";
 
 const ReportForm = () => {
   const location = useLocation();
@@ -32,17 +33,23 @@ const ReportForm = () => {
     const translator = ShortUniqueId();
     const ticket = translator.new();
 
-    console.log(ticket)
     const reportData = {
       ticket,
+      type: reportType,
       message: cleanMessage,
       url,
-      reportType,
-      status: "pending",
+      status: "submitted",
       created_at: new Date().toISOString(),
     };
 
     console.log(reportData);
+
+    try {
+      await submitReport(reportData);
+      setstatus("submitted");
+    } catch (error) {
+      setstatus("error");
+    }
   };
   return (
     <>

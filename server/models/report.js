@@ -5,7 +5,7 @@ export async function initReport() {
     // await sql`DROP TABLE reports`
     await sql`
       CREATE TABLE IF NOT EXISTS reports(
-      ticket VARCHAR(36) PRIMARY KEY, -- use UUID or short ID
+      ticket VARCHAR(36) PRIMARY KEY,
       type VARCHAR(20) NOT NULL,
       message TEXT NOT NULL,
       url TEXT,

@@ -15,8 +15,10 @@ const Feedback = () => {
     navigate(`/reports?type=${type}`);
   };
   
+
+
   return (
-    <div className="bg-black text-white min-h-screen px-4 md:px-8 lg:px-16">
+    <div className="bg-black text-white min-h-screen px-4 md:px-8 lg:px-16 border-t border-gray-800">
       {/* Header */}
       <div className="py-10 md:py-16">
         <h1 className="font-bold text-4xl text-center mb-4">

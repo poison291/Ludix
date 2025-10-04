@@ -9,6 +9,7 @@ import reportRoutes from "./Routes/reportRoutes.js"
 import { aj } from "./lib/arcjet.js";
 import { initGamesTable } from "./models/game.js";
 import { initUsersTable } from "./models/user.js";
+import { initReport } from "./models/report.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -77,13 +78,17 @@ app.get("/", (req, res) => {
 //Api Routes setup
 app.use("/api/games", gameRoutes);
 app.use("/api/users", authRoutes);
-app.use("/api/reports", reportRoutes)
+app.use("/api/reports", (req, res, next) => {
+  console.log(`📨 Reports route hit: ${req.method} ${req.originalUrl}`);
+  next();
+}, reportRoutes);
 
 app.get("/api", (req, res) => {
   res.json({
     endpoints: [
       { method: "GET", path: "/api/games", description: "Get all games" },
       { method: "GET", path: "/api/users", description: "Get all users" },
+      { method: "GET", path: "/api/reports", description: "Get all Reports" },
     ],
   });
 });
@@ -99,6 +104,7 @@ async function initDB() {
   try {
     await initGamesTable();
     await initUsersTable();
+    await initReport();
     console.log("Database initialized");
   } catch (err) {
     console.error("DB initialization error:", err);
