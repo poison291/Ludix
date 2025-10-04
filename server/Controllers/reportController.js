@@ -4,7 +4,7 @@ import { sql } from "../config/db.js";
 export const getReports = async (req, res) => {
   try {
     const reports = await sql`SELECT * FROM reports ORDER BY created_at DESC`;
-    return res.json({ success: true, data: reports });
+    return res.json(reports);
   } catch (error) {
     console.log(`Error Getting user reports List: ${error}`);
     return res
